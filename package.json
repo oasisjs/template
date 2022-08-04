@@ -1,0 +1,23 @@
+{
+  "name": "template",
+  "version": "0.1.0",
+  "description": "template to scale a bot with biscuit",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "gateway": "node --no-warnings --experimental-fetch ./dist/gateway/index.js",
+    "rest": "node --no-warnings --experimental-fetch ./dist/rest/index.js",
+    "bot": "node --no-warnings --experimental-fetch ./dist/bot/index.js"
+  },
+  "author": "Yuzu",
+  "license": "MIT",
+  "dependencies": {
+    "@biscuitland/core": "^1.2.0",
+    "dotenv": "^16.0.1",
+    "fastify": "^4.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
+  "type": "module"
+}

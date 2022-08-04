@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es2020",
+    "module": "esnext",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "allowUnusedLabels": false,
+    "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "stripInternal": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": false,
+    "allowUnreachableCode": false,
+    "outDir": "dist",
+    "rootDir": "apps"
+  },
+  "include": ["./apps/**/*"]
+}
