@@ -10,7 +10,7 @@
     "bot": "node --no-warnings --experimental-fetch ./dist/bot/index.js"
   },
   "author": "Yuzu",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "@biscuitland/core": "^1.2.0",
     "dotenv": "^16.0.1",
