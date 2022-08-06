@@ -9,7 +9,7 @@ import "dotenv/config";
 
 const rest = new DefaultRestAdapter({
     url: `http://localhost:${process.env["REST_PORT"]!}`,
-    token: process.env["AUTH"]!,
+    token: process.env.AUTH,
     version: 10,
 });
 
@@ -43,6 +43,6 @@ app.all("*", async (req, reply) => {
         reply.status(204).send({ status: 204, data: null });
 });
 
-console.log("Open rest on port %d", Number.parseInt(process.env["REST_PORT"]!));
+console.log("Open rest on port %d", Number.parseInt(process.env.REST_PORT));
 
-app.listen({ port: Number.parseInt(process.env["REST_PORT"]!) });
+app.listen({ port: Number.parseInt(process.env.REST_PORT) });
