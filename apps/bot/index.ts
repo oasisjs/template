@@ -51,7 +51,7 @@ app.all("*", (req, reply) => {
     }
 
     // ?. Just in case the bot emits an event that is not supported yet
-    Actions[json.data.t]?.(session, Number.parseInt(json.shardId), json.data);
+    Actions[json.data.t]?.(session, Number.parseInt(json.shardId), json.data.d);
 
     reply.send(new Response(undefined, { status: 204 }));
 });
