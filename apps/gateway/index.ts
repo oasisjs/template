@@ -13,7 +13,6 @@ const INTENTS = GatewayIntents.Guilds | GatewayIntents.GuildMessages | GatewayIn
 import "dotenv/config";
 
 const rest = new DefaultRestAdapter({
-    url: `http://localhost:${process.env.REST_PORT}`,
     token: process.env.AUTH!,
     version: 10
 });
