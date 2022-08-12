@@ -7,15 +7,14 @@ import "dotenv/config";
 
 const rest = new DefaultRestAdapter({
     url: `http://localhost:${process.env.REST_PORT}`,
-    token: process.env.AUTH,
+    token: process.env.AUTH!,
     version: 10
 });
 
-const intents = 0;
-
-const session = new Session({ token: process.env.AUTH, rest, intents });
+const session = new Session({ token: process.env.AUTH!, rest });
 
 session.events.on("ready", (ready) => {
+    // NOTE: this event won't be emitted unless a new shard spawns
     console.log(`Ready on shard ${ready.shard}! logged in as ${ready.user.tag}`);
 });
 
@@ -51,12 +50,16 @@ app.all("*", (req, reply) => {
     }
 
     // ?. Just in case the bot emits an event that is not supported yet
-    Actions[json.data.t]?.(session, Number.parseInt(json.shardId), json.data.d);
+    Actions[json.data.t as keyof typeof Actions]?.(
+        session,
+        Number.parseInt(json.shardId),
+        json.data.d as any,
+    );
 
     reply.send(new Response(undefined, { status: 204 }));
 });
 
 console.log("Open bot");
 
-app.listen({ port: Number.parseInt(process.env.GW_PORT) });
+app.listen({ port: Number.parseInt(process.env.GW_PORT!) });
 

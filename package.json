@@ -12,11 +12,13 @@
   "author": "Yuzu",
   "license": "Apache-2.0",
   "dependencies": {
-    "@biscuitland/core": "^1.2.0",
+    "@biscuitland/core": "^1.3.1",
     "dotenv": "^16.0.1",
     "fastify": "^4.3.0"
   },
   "devDependencies": {
+    "@types/node": "^18.7.2",
+    "@types/ws": "^8.5.3",
     "typescript": "^4.7.4"
   },
   "type": "module"

@@ -14,7 +14,7 @@ import "dotenv/config";
 
 const rest = new DefaultRestAdapter({
     url: `http://localhost:${process.env.REST_PORT}`,
-    token: process.env.AUTH,
+    token: process.env.AUTH!,
     version: 10
 });
 
@@ -35,7 +35,7 @@ const gw = new DefaultWsAdapter({
     totalShards: config.shards,
     gatewayBot: config,
     gatewayConfig: {
-        token: process.env.AUTH,
+        token: process.env.AUTH!,
         intents: INTENTS,
     },
     async handleDiscordPayload(shard, data: unknown) {
@@ -53,6 +53,6 @@ const gw = new DefaultWsAdapter({
 gw.options.lastShardId = gw.options.gatewayBot.shards - 1;
 gw.agent.options.totalShards = gw.options.gatewayBot.shards;
 
-console.log("Open gateway on port %d", Number.parseInt(process.env.GW_PORT));
+console.log("Open gateway on port %d", Number.parseInt(process.env.GW_PORT!));
 
 gw.shards();
