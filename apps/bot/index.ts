@@ -4,12 +4,13 @@ import { WebSocketServer } from 'ws';
 
 import 'dotenv/config';
 
-const rest = new DefaultRestAdapter({
-    token: '',
-    url: `http://localhost:${process.env.REST_PORT}`
+const session = new Biscuit({
+    token: process.env.AUTH!,
+    rest: {
+        adapter: DefaultRestAdapter,
+        options: { url: `http://localhost:${process.env.REST_PORT}` }
+    }
 });
-
-const session = new Biscuit({ token: process.env.AUTH!, rest });
 
 session.events.on('ready', ready => {
     // NOTE: this event won't be emitted unless a new shard spawns

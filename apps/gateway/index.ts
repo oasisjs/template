@@ -38,7 +38,7 @@ const ask = () => {
 
 const init = async () => {
     const gateway = await rest.get<DiscordGetGatewayBot>('/gateway/bot');
-
+    
     const socket = new ShardManager({
         config: {
             token: process.env.AUTH!,
