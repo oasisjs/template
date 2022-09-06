@@ -24,7 +24,7 @@ session.events.on('interactionCreate', async interaction => {
     }
 });
 
-const app = new WebSocketServer({ port: process.env.WS_PORT! });
+const app = new WebSocketServer({ port: Number.parseInt(process.env.WS_PORT!) });
 const textDecoder = new TextDecoder();
 
 app.on('connection', ws => {

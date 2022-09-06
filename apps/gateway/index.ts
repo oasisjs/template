@@ -47,7 +47,7 @@ const init = async () => {
         gateway,
         handleDiscordPayload(shard, payload) {
             if (ws && ws.readyState === WebSocket.OPEN) {
-                ws.send(JSON.stringify({ id: shard[0], payload }));
+                ws.send(JSON.stringify({ id: shard.options.id, payload }));
             }
         },
     });
@@ -58,4 +58,3 @@ const init = async () => {
 
 init();
 
-gw.shards();
