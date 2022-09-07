@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf && tsc",
+    "deploy": "node --no-warnings --experimental-fetch ./dist/bot/deployCommands.js",
     "gateway": "node --no-warnings --experimental-fetch ./dist/gateway/index.js",
     "rest": "node --no-warnings --experimental-fetch ./dist/rest/index.js",
     "bot": "node --no-warnings --experimental-fetch ./dist/bot/index.js"

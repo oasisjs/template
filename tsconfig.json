@@ -19,5 +19,5 @@
     "outDir": "dist",
     "rootDir": "apps"
   },
-  "include": ["./apps/**/*"]
+  "include": ["./apps/**/**/*"]
 }
