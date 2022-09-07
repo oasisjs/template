@@ -2,47 +2,44 @@
  * Standalone rest process
  */
 
-import { DefaultRestAdapter } from "@biscuitland/rest";
-import Fastify from "fastify";
+import { DefaultRestAdapter } from '@biscuitland/rest';
+import Fastify from 'fastify';
 
-import "dotenv/config";
+import 'dotenv/config';
 
 const rest = new DefaultRestAdapter({
-    url: `http://localhost:${process.env.REST_PORT!}`,
     token: process.env.AUTH!,
     version: 10,
 });
 
 const app = Fastify({});
 
-app.all("*", async (req, reply) => {
+app.all('*', async (req, reply) => {
     let response: unknown;
 
+    let url = req.url.replace('/v10', '');
+
     switch (req.method) {
-    case "GET":
-        response = await rest.get(req.url, req.body);
-    break;
-    case "POST":
-        response = await rest.post(req.url, req.body);
-    break;
-    case "PUT":
-        response = await rest.put(req.url, req.body);
-    break;
-    case "PATCH":
-        response = await rest.patch(req.url, req.body);
-    break;
-    case "DELETE":
-        response = await rest.delete(req.url, req.body);
-    break;
+        case 'GET':
+            response = await rest.get(url, req.body);
+            break;
+        case 'POST':
+            response = await rest.post(url, req.body);
+            break;
+        case 'PUT':
+            response = await rest.put(url, req.body);
+            break;
+        case 'PATCH':
+            response = await rest.patch(url, req.body);
+            break;
+        case 'DELETE':
+            response = await rest.delete(url, req.body);
+            break;
     }
 
-    if (response)
-        reply.status(200).send({ status: 200, data: response });
-
-    else
-        reply.status(204).send({ status: 204, data: null });
+    if (response) { reply.status(200).send(response); } else { reply.status(204).send({}); }
 });
 
-console.log("Open rest on port %d", Number.parseInt(process.env.REST_PORT!));
+console.log('Open rest on port %d', Number.parseInt(process.env.REST_PORT!));
 
 app.listen({ port: Number.parseInt(process.env.REST_PORT!) });

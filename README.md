@@ -10,9 +10,9 @@ GW_PORT=8080
 ```
 
 ## Run
-- `npm run gateway &`
 - `npm run rest &`
-- `npm run bot`
+- `npm run bot &`
+- `npm run gateway`
 
 then you should keep the gateway and rest services on as long as possible and just restart the bot service
 
