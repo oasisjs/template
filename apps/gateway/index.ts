@@ -36,6 +36,8 @@ const ask = () => {
         });
 };
 
+ask();
+
 const init = async () => {
     const gateway = await rest.get<DiscordGetGatewayBot>('/gateway/bot');
     
